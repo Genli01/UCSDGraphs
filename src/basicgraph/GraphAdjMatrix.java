@@ -13,7 +13,7 @@ import java.util.Set;
  * The edges of the graph are not labeled.
  * Representation of edges via an adjacency matrix.
  * 
- * @author UCSD MOOC development team and YOU
+ * @author UCSD MOOC development team and Gen Li
  *
  */
 public class GraphAdjMatrix extends Graph {
@@ -104,8 +104,12 @@ public class GraphAdjMatrix extends Graph {
 	 * @return List<Integer> a list of indices of vertices.  
 	 */	
 	public List<Integer> getDistance2(int v) {
-		// XXX Implement this method in week 2
-		return null;
+		List<Integer> twoHop = new ArrayList<Integer>();
+		List<Integer> oneHop = getNeighbors(v);
+		for (Integer i : oneHop) {
+			twoHop.addAll(getNeighbors(i));
+		}
+		return twoHop;
 	}
 	
 	/**
